@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">YIClass</string>
+    <string name="week_view">周视图</string>
+    <string name="day_view">日视图</string>
+    <string name="list_view">列表</string>
+    <string name="settings">设置</string>
+    <string name="course_edit">编辑课程</string>
+    <string name="add_course">添加课程</string>
+    <string name="timetable">课表</string>
+    <string name="import_export">导入/导出</string>
+    <string name="school_repository">学校课表</string>
+    <string name="course_reminder_channel">课程提醒</string>
+</resources>

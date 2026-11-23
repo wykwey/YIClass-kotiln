@@ -1,0 +1,31 @@
+# Android
+*.iml
+.gradle
+/local.properties
+/.idea
+.DS_Store
+/build
+/captures
+.externalNativeBuild
+.cxx
+local.properties
+
+# Kotlin/Java
+*.class
+*.jar
+!/gradle/wrapper/gradle-wrapper.jar
+*.war
+*.aar
+
+# Generated
+app/src/main/java/wykwey/yiclass/data/local/AppDatabase_Impl.java
+
+# 签名配置（含密钥，不入库）
+key.properties
+app/keystore/
+
+# 任意层级的构建产物
+build/
+
+# Kotlin 缓存
+.kotlin/

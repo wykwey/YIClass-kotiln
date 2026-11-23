@@ -1,0 +1,32 @@
+package wykwey.yiclass
+
+import android.app.Application
+import androidx.hilt.work.HiltWorkerFactory
+import androidx.work.Configuration
+import dagger.hilt.android.HiltAndroidApp
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.SupervisorJob
+import kotlinx.coroutines.launch
+import wykwey.yiclass.data.reminder.CourseReminderScheduler
+import wykwey.yiclass.domain.timetable.TimetableSelection
+import javax.inject.Inject
+
+@HiltAndroidApp
+class YIClassApplication : Application(), Configuration.Provider {
+
+    @Inject lateinit var workerFactory: HiltWorkerFactory
+    @Inject lateinit var reminderScheduler: CourseReminderScheduler
+    @Inject lateinit var timetableSelection: TimetableSelection
+
+    override val workManagerConfiguration: Configuration
+        get() = Configuration.Builder().setWorkerFactory(workerFactory).build()
+
+    private val applicationScope = CoroutineScope(SupervisorJob() + Dispatchers.IO)
+
+    override fun onCreate() {
+        super.onCreate()
+        applicationScope.launch { timetableSelection.initialize() }
+        reminderScheduler.observeIn(applicationScope)
+    }
+}

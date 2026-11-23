@@ -1,0 +1,2 @@
+-keep class * extends androidx.room3.RoomDatabase
+-dontwarn androidx.room3.paging.**
